@@ -1,0 +1,12 @@
+rtx5test1\gui_x_rte.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.9.0\emWin\Sample\GUI_X\GUI_X_RTE.c
+rtx5test1\gui_x_rte.o: .\RTE\_RTX5TEST1\RTE_Components.h
+rtx5test1\gui_x_rte.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h
+rtx5test1\gui_x_rte.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+rtx5test1\gui_x_rte.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\GUI.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\GUI_ConfDefaults.h
+rtx5test1\gui_x_rte.o: ..\STemwin\Config\GUIConf.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\GUI_Type.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\LCD.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\Global.h
+rtx5test1\gui_x_rte.o: ..\STemwin\inc\GUI_Version.h

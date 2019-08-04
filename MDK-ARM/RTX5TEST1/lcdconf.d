@@ -1,0 +1,9 @@
+rtx5test1\lcdconf.o: ..\STemwin\Config\LCDConf.c
+rtx5test1\lcdconf.o: ..\STemwin\inc\GUI.h
+rtx5test1\lcdconf.o: ..\STemwin\inc\GUI_ConfDefaults.h
+rtx5test1\lcdconf.o: ..\STemwin\Config\GUIConf.h
+rtx5test1\lcdconf.o: ..\STemwin\inc\GUI_Type.h
+rtx5test1\lcdconf.o: ..\STemwin\inc\LCD.h
+rtx5test1\lcdconf.o: ..\STemwin\inc\Global.h
+rtx5test1\lcdconf.o: ..\STemwin\inc\GUI_Version.h
+rtx5test1\lcdconf.o: ..\STemwin\Config\GUIDRV_Template.h

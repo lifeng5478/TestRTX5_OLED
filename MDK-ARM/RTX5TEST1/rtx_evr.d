@@ -1,0 +1,11 @@
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\RTOS2\RTX\Source\rtx_evr.c
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\RTOS2\RTX\Include\rtx_evr.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\RTOS2\Include\cmsis_os2.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+rtx5test1\rtx_evr.o: .\RTE\CMSIS\RTX_Config.h
+rtx5test1\rtx_evr.o: .\RTE\_RTX5TEST1\RTE_Components.h
+rtx5test1\rtx_evr.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\RTOS2\RTX\Include\rtx_os.h

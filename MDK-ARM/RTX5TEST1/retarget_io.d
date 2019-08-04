@@ -1,0 +1,9 @@
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.1\Source\retarget_io.c
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\rt_sys.h
+rtx5test1\retarget_io.o: .\RTE\_RTX5TEST1\RTE_Components.h
+rtx5test1\retarget_io.o: C:\Keil_v5\ARM\PACK\Keil\ARM_Compiler\1.6.1\Include\EventRecorder.h

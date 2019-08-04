@@ -1,0 +1,13 @@
+rtx5test1\gui_x_os.o: ..\STemwin\OS\GUI_X_OS.c
+rtx5test1\gui_x_os.o: ..\STemwin\inc\GUI.h
+rtx5test1\gui_x_os.o: ..\STemwin\inc\GUI_ConfDefaults.h
+rtx5test1\gui_x_os.o: ..\STemwin\Config\GUIConf.h
+rtx5test1\gui_x_os.o: ..\STemwin\inc\GUI_Type.h
+rtx5test1\gui_x_os.o: ..\STemwin\inc\LCD.h
+rtx5test1\gui_x_os.o: ..\STemwin\inc\Global.h
+rtx5test1\gui_x_os.o: ..\STemwin\inc\GUI_Version.h
+rtx5test1\gui_x_os.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\RTOS2\RTX\Include1\cmsis_os.h
+rtx5test1\gui_x_os.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\RTOS2\Include\cmsis_os2.h
+rtx5test1\gui_x_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+rtx5test1\gui_x_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+rtx5test1\gui_x_os.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\RTOS2\RTX\Include\rtx_os.h
