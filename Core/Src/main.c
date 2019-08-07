@@ -45,6 +45,7 @@
 #include "lcd_zk.h"
 //#include "EventRecorder.h"
 //#include "ugui.H"
+#include "spi.h"
 #include "config.h"
 
 #include "arm_math.h"
@@ -107,13 +108,13 @@ void oledblink(void *arg)
 	//OLED_DrawPoint(0,0,1);
   while(1) 
   {
-	OLED_draw_pixel(x,y,1);
-	x++;
-		if(x>127)
-		{
-			x=0;
-			y++;
-		}
+//	OLED_draw_pixel(x,y,1);
+//	x++;
+//		if(x>127)
+//		{
+//			x=0;
+//			y++;
+//		}
 		//osDelay(2);
 //	OLED_ShowString(1,2,"    DSI");
 //		printf("The value of i is %d\n", 1);
@@ -230,10 +231,11 @@ uint8_t i=0;
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+	MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
-		for(i=0;i<128;i++)
-			fall_pot[i] = 63;
+//		for(i=0;i<128;i++)
+//			fall_pot[i] = 63;
 //	osKernelInitialize();                 // Initialize CMSIS-RTOS
 //  osThreadNew(app_main, NULL, NULL);    // Create application main thread
 //  osKernelStart();                      // Start thread execution
@@ -251,15 +253,8 @@ uint8_t i=0;
 //UG_DrawLine(0,63,0,60,2);
 
 
-GUI_Initialize();
-//GUI_LineWith(1,63,1,63-5,3,1);
-//GUI_LineWith(5,63,5,63-10,3,1);
-//GUI_LineWith(9,63,9,63-15,3,1);
-//GUI_LineWith(13,63,13,63-20,3,1);
-//GUI_LineWith(17,63,17,63-25,3,1);
-//GUI_LineWith(21,63,21,63-30,3,1);
-//GUI_LineWith(25,63,25,63-35,3,1);
-//GUI_LineWith(29,63,29,63-40,3,1);
+//GUI_Initialize();
+
 
   /* Process the data through the CFFT/CIFFT module */
 // arm_cfft_f32(&arm_cfft_sR_f32_len1024, testInput_f32_10khz, ifftFlag, doBitReverse);
@@ -285,18 +280,25 @@ GUI_Initialize();
 //  {
 //    while(1);
 //  }
-
+//GUI_RectangleFill(10,10,50,50,1);
 
   /* USER CODE END 2 */
-
+//GUI_LineWith(1,63,1,63-5,3,1);
+//GUI_LineWith(5,63,5,63-10,3,1);
+//GUI_LineWith(9,63,9,63-15,3,1);
+//GUI_LineWith(13,63,13,63-20,3,1);
+//GUI_LineWith(17,63,17,63-25,3,1);
+//GUI_LineWith(21,63,21,63-30,3,1);
+//GUI_LineWith(25,63,25,63-35,3,1);
+//GUI_LineWith(29,63,29,63-40,3,1);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 
   /* USER CODE END WHIkLE */
-DrawPotLine();
-//HAL_Delay(1);
+DrawWeithLine();
+//HAL_Delay(100);
   /* USER CODE BEGIN 3 */
 	//	OLED_ShowString(4,3,"RED IR Leaning");
 //		OLED_draw_pixel(x,y,1);
@@ -317,18 +319,19 @@ void DrawPotLine(void)
 {
 uint8_t i = 0;
 uint8_t y = 0;
-	GUI_ClearSCR();
+	//GUI_ClearSCR();
 		for(i=0;i<128;i++)
 	{
 			//	y = rand()%62+1;
 		y=BufferAry[i];
 			//fall_pot[i] = rand();
-			GUI_RLine(i,y,63,1);
-			if(fall_pot[i]>y) fall_pot[i]=y;
+			GUI_RLine(i,y,1,0);
+			GUI_RLine(i,y,64,1);
+			if(fall_pot[i]<(64-y)) fall_pot[i]=(64-y);
 			else{
-			GUI_RLine(i,fall_pot[i],fall_pot[i]+1,1);
-			fall_pot[i] += 3 ;
-				if(fall_pot[i]<1)fall_pot[i]=1;
+			GUI_RLine(i,64-fall_pot[i],64-fall_pot[i]+1,1);
+			if (fall_pot[i]>2)
+			fall_pot[i] -=2;
 			}
 	}
 	GUI_Exec();
@@ -338,17 +341,20 @@ void DrawWeithLine(void)
 {
 uint8_t i = 0;
 uint8_t x,y = 0;
-	GUI_ClearSCR();
+//	GUI_ClearSCR();
 		for(i=1;i<32;i++)
 	{
 				x=(i<<2);
 			//fall_pot[i] = rand();
 				y=BufferAry[i];
-				GUI_LineWith(x,y,x,63,3,1);
-			if(fall_pot[i]>y) fall_pot[i]=y;
+				GUI_LineWith(x,y,x,64,3,1);
+				GUI_LineWith(x,y,x,1,3,0);
+			if(fall_pot[i]<(63-y)) fall_pot[i]=(63-y);
 			else{
 			GUI_LineWith(x,64-fall_pot[i],x,64-fall_pot[i]+1,3,1);
-			fall_pot[i] -= 2 ;
+			if (fall_pot[i]>2)
+			fall_pot[i] -=2;
+			
 			}
 	}
 	GUI_Exec();
@@ -359,13 +365,11 @@ uint8_t x,y = 0;
   */
 void SystemClock_Config(void)
 {
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_PeriphCLKInitTypeDef PeriphClkInit;
-
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
@@ -377,9 +381,8 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
@@ -391,24 +394,9 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-    /**Configure the Systick interrupt time 
-    */
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-
-    /**Configure the Systick 
-    */
-  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+  /** Enables the Clock Security System 
+  */
+  HAL_RCC_EnableCSS();
 }
 
 /* USER CODE BEGIN 4 */
@@ -434,17 +422,21 @@ static uint16_t i,j = 0;
 		if(i<2000)
 		{
 			for(j=0;j<128;j++)
-			BufferAry[j]=63;
+			BufferAry[j]=62;
 		}
 		if(i>2000&&i<4000)
 		{
 			for(j=0;j<128;j++)
-			BufferAry[j]=0;
+			BufferAry[j]=1;
 		}
 		if(i>4000)
 		{
 		i=0;
 		}
+//for(i=0;i<128;i++)
+//		{
+//			BufferAry[i]=rand()%62+1;
+//		}
   }
   /* USER CODE BEGIN Callback 1 */
 
